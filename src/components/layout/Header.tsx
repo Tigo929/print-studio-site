@@ -1,14 +1,17 @@
+"use client";
 import navigation from "@/lib/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../../../public/logo.png";
+import Logo from "../../../public/logo.svg";
 import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 export default function Header() {
+  const urlParam = usePathname();
   return (
     <header>
       <div>
         <Link href={"/"}>
-          <Image src={Logo} alt="Логотип" width={34} height={34} />
+          <Image src={Logo} alt="Логотип" width={34} height={70} />
         </Link>
         <div>
           <p>PRINT STUDIO</p>
@@ -18,9 +21,15 @@ export default function Header() {
       <nav>
         <ul>
           {navigation.map((e, i) => {
+            const isActiveLink = urlParam === e.href;
             return (
               <li key={e.href}>
-                <Link href={e.href}>{e.label}</Link>
+                <Link
+                  className={isActiveLink ? "nav-link-active" : ""}
+                  href={e.href}
+                >
+                  {e.label}
+                </Link>
               </li>
             );
           })}
