@@ -47,7 +47,8 @@
 :root {
   --active-color-link: rgba(230, 200, 122, 0.95);
   --active-border-link: rgba(201, 162, 77, 0.55);
-  --arctive-border-radious: 12px;
+  --arctive-border-radious-link: 12px;
+  --active-bg-link: rgba(201, 162, 77, 0.205);
 }
 
 @layer base {
@@ -57,13 +58,15 @@
 
   body {
     @apply bg-background text-foreground;
-    background-color: var(--background);
+    background-color: black;
+    color: white;
   }
 }
 @layer components {
   .nav-link-active {
     color: var(--active-color-link);
     border: 1px solid var(--active-border-link);
-    border-radius: var(--arctive-border-radious);
+    border-radius: var(--arctive-border-radious-link);
+    background-color: var(--active-bg-link);
   }
 }
